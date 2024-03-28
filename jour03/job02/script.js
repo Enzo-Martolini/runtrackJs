@@ -39,6 +39,7 @@ $(document).ready(function(){
         images2.each(function() {
             var nomImage2 = $(this).attr('alt');
             nomsDesImages2.push(nomImage2);
+            console.log(imagesArrivée)
         });
 
         console.log(nomsDesImages2)
