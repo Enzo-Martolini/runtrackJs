@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return jsonObject[key]
         }
     
-        console.log(jsonValueKey(jsonTableau, 'age'))
+        console.log(jsonValueKey(jsonTableau, 'city'))
 
 })
  
