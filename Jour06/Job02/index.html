@@ -70,25 +70,23 @@
             <div class="col-md-7">
                 <div class="jumbotron bg-light mr-3 p-5">
                     <h1 class="display-4">Bonjour le monde !</h1>
-                    <p class="lead">Il existe plusieurs versions du thermes :</p>
-                    <p class="lead">Le monde est la matière, l'espace, et les phenomènes qui nous sont accèssible pas les sens, l'expérience ou la raison</p>
-                    <p class="lead">Le sens le plus courant designe notre planète, la terre avec ses habitants, et son environnement plus ou moins naturel.</p>
-                    <hr class="my-4">
-                    <p>Le sens entendu désigne l'univers dans son ensemble.</p>
+                    <div id="worldDiv">
+
+                    </div>
                     <p class="lead">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="container">
-                                <a class="btn btn-primary btn-lg" href="#" role="button">Rebooter le monde </a>
-                                <button class="btn" type="button" disabled>
+                              <button onclick="ajouterParagraphe(chiffreAleatoire())" class="btn btn-primary btn-lg" href="#" role="button">Rebooter le monde</button>
+                              <button class="btn" type="button" disabled>
                                     <span class="spinner-border spinner-sm" aria-hidden="true"></span>
                                 </button>
                             </div>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-muted btn-lg text-primary"><</button>
-                                <button type="button" class="btn btn-muted btn-lg text-primary">1</button>
-                                <button type="button" class="btn btn-muted btn-lg text-primary">2</button>
-                                <button type="button" class="btn btn-muted btn-lg text-primary">3</button>
-                                <button type="button" class="btn btn-muted btn-lg text-primary">></button>
+                                <button type="button" class="btn btn-muted btn-lg text-primary" onclick="ajouterParagraphe(0)"><</button>
+                                <button type="button" class="btn btn-muted btn-lg text-primary" onclick="ajouterParagraphe(1)">1</button>
+                                <button type="button" class="btn btn-muted btn-lg text-primary" onclick="ajouterParagraphe(2)">2</button>
+                                <button type="button" class="btn btn-muted btn-lg text-primary" onclick="ajouterParagraphe(3)">3</button>
+                                <button type="button" class="btn btn-muted btn-lg text-primary" onclick="ajouterParagraphe(4)">></button>
                             </div>
                         </div>
                     </p>
@@ -181,8 +179,7 @@
     </div>
     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script>$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})</script>
+
+<script src="script.js"></script>
 </body>
 </html>
