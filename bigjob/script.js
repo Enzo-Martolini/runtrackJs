@@ -18,17 +18,6 @@ function createCalendar(year, month) {
     const weekdaysDiv = document.createElement('div'); //Crée un div
     weekdaysDiv.classList.add('weekdays'); //Ajoute la class "weekdays"
 
-    /*const weekdays = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
-
-    weekdays.forEach(day => {
-        const weekdayDiv = document.createElement('div');
-        weekdayDiv.classList.add('weekday');
-        weekdayDiv.textContent = day;
-        weekdaysDiv.appendChild(weekdayDiv);
-    }); */
-    //Pour chaque jour, crée une div avec la class weekdays, ajoute le weekdayss[day], pour l'ajoute la div weekday à la div weekdays
-    //Donc dans la dic weekdays, on a une div weekday pour chaque jour de la semaine
-
     const daysDiv = document.createElement('div'); //crée une div
     daysDiv.classList.add('days'); //ajoute la classe days
 
@@ -45,7 +34,60 @@ function createCalendar(year, month) {
         dayDiv.textContent = i;
         dayDiv.style.width = '12%'; // Ajout du style de largeur
         daysDiv.appendChild(dayDiv);
+
+        // Ajout de l'événement de clic à chaque jour
+        dayDiv.addEventListener('click', function() {showModal(i, month, year); // Fonction à appeler lors du clic
+        });
     }
+
+    function saveDateToJSON(day, month, year) {
+        const data = {
+            day: day,
+            month: month + 1,
+            year: year
+        };
+    
+        // Convertit l'objet JSON en chaîne JSON
+        const jsonData = JSON.stringify(data);
+    
+        // Enregistre les données dans un fichier JSON local
+        // Dans ce cas, on utilise localStorage, mais vous pouvez ajuster cela selon vos besoins
+        localStorage.setItem('savedDate', jsonData);
+    
+        console.log('Date sauvegardée avec succès :', jsonData);
+    }
+    
+    function attachClickEventToDays() {
+        const days = document.querySelectorAll('.day');
+    
+        days.forEach(day => {
+            day.addEventListener('click', function() {
+                const dayOfMonth = parseInt(this.textContent);
+                saveDateToJSON(dayOfMonth, currentMonth, currentYear);
+                showModal(dayOfMonth, currentMonth, currentYear);
+            });
+        });
+    }
+    
+    // Appel de la fonction pour attacher les événements de clic aux jours du mois
+    attachClickEventToDays();
+    
+
+    function showModal(day, month, year) {
+        const modal = document.getElementById('modal');
+        const modalDate = document.getElementById('modal-date');
+        modalDate.textContent = `Jour sélectionné : ${day}, Mois : ${month + 1}, Année : ${year}`;
+    
+        // Afficher la modale
+        modal.style.display = 'block';
+    
+        // Gérer la fermeture de la modale lors du clic sur le bouton de fermeture (×)
+        const closeButton = document.querySelector('.close');
+        closeButton.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });    
+     }
+    
     
 
     monthDiv.appendChild(weekdaysDiv);
